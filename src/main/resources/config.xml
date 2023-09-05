@@ -1,0 +1,96 @@
+<config>
+
+    <!--指定源代码所在的目录-->
+    <sourceDir>D:\git\blindjava-vip\</sourceDir>
+
+    <!--指定最后生成的代码存放的目录-->
+    <targetDir>E:\blindjava\</targetDir>
+
+    <!--指定排除哪些目录下的文件，一般是排除非源代码的目录，比如.idea、 target目录、前端安装目录node_modules-->
+    <!--注意必须是相对路径，不能填写绝对路径，相对于上面sourceDir的目录-->
+    <!--注意结尾必须加上文件分隔符-->
+    <!--意思就是这些目录下的文件全部不要-->
+    <excludeDir>
+        <directory>logs\</directory>
+        <directory>target\</directory>
+        <directory>.git\</directory>
+        <directory>.idea\</directory>
+    </excludeDir>
+
+    <!-- 指定哪些java文件保持不变，不混淆。比如mybatis映射数据库的实体类、interface类-->
+    <!--可以按 package class 来指定-->
+    <excludeJavaFile>
+        <!-- 此package下的所有类和子包的类都全部代码不混淆-->
+        <!--  <package>com.gitee.freakchicken.dbapi.basic.domain</package>
+          <package>com.gitee.freakchicken.dbapi.basic.dto</package>
+          <package>com.gitee.freakchicken.dbapi.basic.auth</package>
+          <package>com.gitee.freakchicken.dbapi.common</package>
+          <package>com.gitee.freakchicken.dbapi.plugin</package>-->
+
+        <!-- 此class的全部代码不混淆-->
+        <!--  <class>com.gitee.freakchicken.dbapi.basic.util.Constants</class>
+          <class>com.gitee.freakchicken.dbapi.basic.util.IPRuleCache</class>
+          <class>com.gitee.freakchicken.dbapi.basic.rate.LimitedHandler</class>-->
+
+    </excludeJavaFile>
+
+
+    <!--指定哪些方法参数名称保持不变-->
+    <!--比如Controller中的方法的参数名称不能变，因为这些是接口参数，又或者mybatis的Mapper类中的方法参数名称不能变，因为这些参数名称要在sql中使用-->
+    <!--可以按 package class methodHasAnnotation 来指定-->
+    <keepMethodParameter>
+
+        <!-- 此package下的所有类的所有方法的参数名称不混淆-->
+        <!--   <package>com.gitee.freakchicken.dbapi.basic.controller</package>
+           <package>com.gitee.freakchicken.dbapi.basic.dao</package>-->
+
+        <!-- 此class的所有方法的参数名称不混淆-->
+        <!-- <class>xxx</class>-->
+
+        <!-- 如果方法含有以下注解的任意一个，该方法的参数名不混淆-->
+        <!--<methodHasAnnotation>Cacheable</methodHasAnnotation>
+        <methodHasAnnotation>CacheEvict</methodHasAnnotation>-->
+
+    </keepMethodParameter>
+
+
+    <!--指定哪些方法名称保持不变-->
+    <!--比如interface的方法名不能变，又比如实现类的实现方法的名称不能变-->
+    <!--可以按 package class methodHasAnnotation 来指定-->
+    <keepMethodName>
+
+        <!-- 此package下的所有类的所有方法的名称不混淆-->
+        <!-- <package>xxx</package>-->
+
+        <!-- 此class的所有方法的名称不混淆-->
+        <!--  <class>com.gitee.freakchicken.dbapi.basic.executor.Executor</class>
+          <class>com.gitee.freakchicken.dbapi.basic.log.AccessLogWriter</class>-->
+
+        <!-- 如果方法含有以下注解的任意一个，该方法名不混淆-->
+        <!--        <methodHasAnnotation>Override</methodHasAnnotation>-->
+
+    </keepMethodName>
+
+
+    <!--指定哪些类名称保持不变-->
+    <!--比如main Class的名称不能变，因为可能在shell启动脚本中用到了这个类的名称-->
+    <!--可以按class classHasAnnotation 来指定-->
+    <keepClassName>
+        <!-- 此class的类的名称不混淆-->
+        <!-- <class>com.gitee.freakchicken.dbapi.apiserver.DBApiApiServer</class>-->
+        <!-- <class>com.gitee.freakchicken.dbapi.gateway.DBApiGateWay</class>-->
+        <!-- <class>com.gitee.freakchicken.dbapi.manager.DBApiManager</class>-->
+        <!-- <class>com.gitee.freakchicken.dbapi.DBApiStandalone</class>-->
+
+        <!-- 如果类含有以下注解的任意一个，该类名不混淆-->
+        <!--        <classHasAnnotation>SpringBootApplication</classHasAnnotation>-->
+    </keepClassName>
+
+    <!--    非java文本文件，需要替换内容中的class类名的文件的后缀名-->
+    <!--    比如.sh脚本中的内容有 java -cp lib/*: xxx.xxx.xx.C ,就需要替换xxx.xxx.xx.C-->
+    <textFile>
+        <file>sh</file>
+        <file>bat</file>
+    </textFile>
+
+</config>
